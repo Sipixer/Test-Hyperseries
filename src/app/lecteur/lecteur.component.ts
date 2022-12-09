@@ -13,6 +13,7 @@ export class LecteurComponent {
   dropdownopen: boolean = false;
   movie = this.service.getMovie();
 
+  videolink = 'https://www.w3schools.com/html/mov_bbb.mp4';
   images: string[] = [
     'https://picsum.photos/150/100',
     'https://picsum.photos/150/100',

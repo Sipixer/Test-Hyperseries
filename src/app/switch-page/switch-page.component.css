@@ -1,0 +1,16 @@
+.button.active {
+  visibility: hidden;
+}
+.switch_page_container {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.button {
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 20px;
+}

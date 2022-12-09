@@ -1,0 +1,61 @@
+<div class="main">
+  <div class="header">
+    <h1>LECTEUR</h1>
+  </div>
+  <div class="container">
+    <div class="content">
+      <div class="movie">
+        <video
+          (timeupdate)="setCurrentTime($event)"
+          src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+          #myVideo
+        ></video>
+        <div class="controls">
+          <i
+            *ngIf="
+              !(!myVideo.paused && !myVideo.ended && myVideo.readyState > 2)
+            "
+            class="bx bx-play-circle playpause"
+            (click)="myVideo.play()"
+          ></i>
+          <i
+            class="bx bx-pause-circle playpause"
+            (click)="myVideo.pause()"
+            *ngIf="
+              !!(!myVideo.paused && !myVideo.ended && myVideo.readyState > 2)
+            "
+          ></i>
+          <div class="bottom_controls">
+            <div>{{ currentTime }}</div>
+            <div class="bottom_controls_left">
+              <div><i class="bx bx-coffee-togo"></i></div>
+              <div (click)="openFullscreen(myVideo)">
+                <i class="bx bx-fullscreen"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="load" #load (click)="onChangeDuration($event, myVideo, load)">
+        <div class="bar" [ngStyle]="{ width: pourcentage + '%' }"></div>
+      </div>
+      <div class="title" (click)="ToggleDropDown()">
+        <i
+          [className]="
+            dropdownopen ? ' bx bx-down-arrow-alt' : 'bx bx-right-arrow-alt'
+          "
+        ></i>
+        <div>
+          <h3>Nom de la série</h3>
+          <div [className]="'dropdown ' + (dropdownopen && 'open')" #dropdown>
+            <h2>{{ movie.name }}</h2>
+            <p class="views"><i class="bx bx-play"></i> {{ movie.views }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="images">
+        <img *ngFor="let imageurl of images" src="{{ imageurl }}" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

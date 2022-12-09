@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="header">
+    <h1>ÉDITEUR</h1>
+  </div>
+  <form class="content" (submit)="onSave($event, name.value, views.value)">
+    <div class="inputs">
+      <input
+        type="text"
+        [defaultValue]="movie.name"
+        placeholder="Nom de l'épisode"
+        #name
+      />
+      <input
+        type="text"
+        [defaultValue]="movie.views"
+        placeholder="Nombre de vues"
+        #views
+      />
+    </div>
+    <button class="button">SAVE</button>
+  </form>
+</div>
